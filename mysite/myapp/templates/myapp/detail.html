@@ -1,0 +1,17 @@
+{% extends "myapp/base.html" %}
+
+{% block body %}
+<div class="flex p-10">
+    <div>
+        <image src="{{ product.file.url }}" alt="product image" />
+    </div>
+    <div class="pl-10">
+        <div class="mb-4 text-4xl font-bold text-slate-900">{{ product.name }}</div>
+        <div class="mb-4 text-xl tracking-tight text-slate-900">{{ product.desc }}</div>
+        <div class="mb-4 text-xl font-bold tracking-tight text-green-700">${{ product.price }}</div>
+        <div>
+            <button id="checkout-button" class="items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">Add to Cart</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

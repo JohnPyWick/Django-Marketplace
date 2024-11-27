@@ -1,0 +1,25 @@
+{% extends "myapp/base.html" %}
+{% block body %}
+<div class="flex justify-between">
+    <div class="text-xl inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center">
+        My Products
+    </div>
+    <div>
+        <a href="{% url 'addProduct' %}" class="inline-flex items-center px-5 py-2.5 mt-4 mr-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">Add Product</a>
+    </div>
+</div>
+<div clas="products-container p-10 m-5">
+        {% for product in products %}
+            <div class="flex">
+                <img class="h-20" src="{{ product.file.url }}" alt="product image" />
+                <div>
+                    <div>Edit Product</div>
+                </div>
+            </div>
+            {{ product.name }}
+            {{ product.price }}
+            {{ product.desc }}
+        {% endfor %}
+</div>
+
+{% endblock %}
