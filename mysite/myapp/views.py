@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Product
-from .forms import ProductForm
+from .forms import ProductForm,UserRegistrationForm
+from django.contrib.auth.views import LogoutView
+
 # Create your views here.
 def index(request):
     products = Product.objects.all()
@@ -41,3 +43,18 @@ def deleteProduct(request, id):
 def dashboard(request):
     products = Product.objects.all()
     return render(request, 'myapp/dashboard.html',{'products': products})
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.save()
+            return redirect('index')
+        else:
+            print(user_form.errors)
+    user_form = UserRegistrationForm()
+    return render(request, 'myapp/register.html', {'user_form': user_form})
+
+class CustomLogoutView(LogoutView):
+    http_method_names = ['get', 'post']

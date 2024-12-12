@@ -1,34 +1,45 @@
-{% extends "myapp/base.html" %}
-
+{% extends "myapp/base.html" %} 
 {% block body %}
+
 <section class="bg-white dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new product</h2>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                <div class="sm:col-span-2">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
-                    {{ product_form.name }}
-                </div>
-                <div class="w-full">
-                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                    {{ product_form.price }}
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                    {{ product_form.desc }}
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload</label>
-                    {{ product_form.file }}
-                </div>
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Add a new product
+                </h1>
+                <form class="space-y-4 md:space-y-6" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                        <div class="sm:col-span-2">
+                            <label for="name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
+                                Name</label>
+                            <div>{{ product_form.name }}</div>
+                        </div>
+                        <div class="w-full">
+                            <label for="price"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                            <div>{{ product_form.price }}</div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="description"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                            <div>{{ product_form.desc }}</div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="file"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload</label>
+                            <div>{{ product_form.file }}</div>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                        Add product
+                    </button>
+                </form>
             </div>
-            <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                Add product
-            </button>
-        </form>
+        </div>
     </div>
 </section>
 {% endblock %}
-
